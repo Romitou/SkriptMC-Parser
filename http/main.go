@@ -25,7 +25,7 @@ func StartHTTP(ctx *structures.ParserContext) {
 		})
 	})
 
-	err := r.Run("127.0.0.1:8000")
+	err := r.Run("0.0.0.0:8000")
 	if err != nil {
 		log.Fatal("[Skript-MC] Cannot start web server: ", err)
 	}
