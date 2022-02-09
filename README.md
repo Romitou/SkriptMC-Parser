@@ -3,7 +3,7 @@ SkriptMC-Parser is currently a prototype in the early stages of development of a
 
 ## Related projects
 
-Many repositories will integrate it, as part of its operation or as part of using its API. First, the [SkriptMC-Parser-Engine](https://github.com/Romitou/SkriptMC-Parser-Engine) *(Java)* repository is essential to the operation of [SkriptMC-Parser](https://github.com/Romitou/SkriptMC-Parser) *(Go)* as it contains the source code of the parser environment, distributing private Docker images ready to be executed.
+Many repositories will integrate it, as part of its operation or as part of using its API. First, the [SkriptMC-Parser-Engine](https://github.com/Romitou/SkriptMC-Parser-Engine) *(Kotlin & Java)* repository is essential to the operation of [SkriptMC-Parser](https://github.com/Romitou/SkriptMC-Parser) *(Go)* as it contains the source code of the parser environment, distributing private Docker images ready to be executed.
 
 It might be possible to use this project to integrate it with Skript-MC's Discord bot, namely [Swan](https://github.com/Skript-MC/Swan) *(TypeScript)*. Users will be able to check the validity of their script with the bot and consequently with SkriptMC-Parser.
 
