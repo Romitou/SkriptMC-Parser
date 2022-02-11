@@ -26,5 +26,5 @@ func RateLimiter(ctx *structures.ParserContext) {
 	middleware := gin.NewMiddleware(limiter.New(store, rate))
 	ctx.Gin.Use(middleware)
 
-	log.Println("[Skript-MC] SetupLimiter middleware successfully registered.")
+	log.Println("[Skript-MC] Ratelimiter middleware successfully registered.")
 }
