@@ -29,6 +29,10 @@ func RefreshContainers(ctx *structures.ParserContext) {
 	for i := range containers {
 		container := containers[i]
 
+		if container.State != "running" {
+			continue
+		}
+
 		// TODO: check the container version
 		_, ok := container.Labels["skriptmc.parser.engine-version"]
 		if !ok {
