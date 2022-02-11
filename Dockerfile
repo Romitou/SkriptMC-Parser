@@ -17,6 +17,7 @@ FROM alpine:3.15
 WORKDIR /app
 
 COPY --from=build /app/go/skmc-parser /app/skmc-parser
+COPY ./config.yaml /app/config.yaml
 RUN chmod +x ./skmc-parser
 
 EXPOSE 8000
