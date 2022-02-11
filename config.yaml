@@ -12,7 +12,7 @@ rateLimiter:
   prefix: "limiter_skmcparser"
 
 redis:
-  # address: takes env variable
-  # username: takes env variable
-  # password : takes env variable
+  address: "185.157.247.16:6379"
+  username: ""
+  password : "WQVNpQrBgKcndRvyk"
   db: 0
