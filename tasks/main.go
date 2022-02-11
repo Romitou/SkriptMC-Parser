@@ -9,6 +9,8 @@ import (
 )
 
 func InitTasks(ctx *structures.ParserContext) {
+	ctx.Tasks = map[string]*structures.Task{}
+
 	InitCrontab(ctx)
 	RegisterTasks(ctx,
 		scheduled.RebuildParsers(),
@@ -35,6 +37,7 @@ func RegisterTask(ctx *structures.ParserContext, task *structures.Task) {
 	if err != nil {
 		log.Fatal("[Skript-MC] An error occurred when registering "+task.Name+" task: ", err)
 	}
+
 	ctx.Tasks[task.Name] = task
 	log.Println("[Skript-MC] Task " + task.Name + " successfully registered.")
 }
