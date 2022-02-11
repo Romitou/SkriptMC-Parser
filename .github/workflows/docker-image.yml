@@ -1,26 +1,45 @@
-name: Docker
-
-on:
-  push:
-    branches:
-      - main
+name: Build & push
+on: [ push, pull_request ]
 
 jobs:
-  push-image:
+  build:
+    # Only run on PRs if the source branch is on someone else's repo
+    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
-
     steps:
       - name: ⬇️ Checkout
         uses: actions/checkout@v2
-
+      - name: 🔧 Setup Go 1.17
+        uses: actions/setup-java@v2.5.0
+        with:
+          go-version: '1.17.7'
+      - name: 📦 Download dependencies
+        run: go get
+      - name: 🛠 Build binary
+        run: CGO_ENABLED=1 GOOS=linux go build -ldflags "-s -w" -o skmc-parser
+      - name: 📤 Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: skmc-parser
+          path: ./skmc-parser
+  push:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v2
+      - name: 📥 Download artifact
+        uses: actions/download-artifact@master
+        with:
+          name: skmc-parser
+          path: ./skmc-parser
       - name: 🐋 Build Docker image
         run: docker build -t ghcr.io/romitou/skmc-parser:latest .
-
       - name: 🔐 Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
       - name: 📤 Push image
         run: docker push ghcr.io/romitou/skmc-parser:latest
