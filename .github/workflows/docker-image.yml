@@ -29,11 +29,6 @@ jobs:
     steps:
       - name: ⬇️ Checkout
         uses: actions/checkout@v2
-      - name: 📥 Download artifact
-        uses: actions/download-artifact@master
-        with:
-          name: skmc-parser
-          path: ./skmc-parser
       - name: 🐋 Build Docker image
         run: docker build -t ghcr.io/romitou/skmc-parser:latest .
   push-image:
@@ -46,11 +41,6 @@ jobs:
     steps:
       - name: ⬇️ Checkout
         uses: actions/checkout@v2
-      - name: 📥 Download artifact
-        uses: actions/download-artifact@master
-        with:
-          name: skmc-parser
-          path: ./skmc-parser
       - name: 🐋 Build Docker image
         run: docker build -t ghcr.io/romitou/skmc-parser:latest .
       - name: 🔐 Log in to registry
