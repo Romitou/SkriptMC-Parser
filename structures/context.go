@@ -7,7 +7,8 @@ import (
 )
 
 type ParserContext struct {
-	HTTP    *gin.Engine
+	Config  *Config
+	Gin     *gin.Engine
 	Docker  *client.Client
 	Cache   *Cache
 	Crontab *crontab.Crontab

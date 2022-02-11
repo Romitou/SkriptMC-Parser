@@ -1,0 +1,18 @@
+# This configuration is prod-ready, and you SHOULD NOT edit it.
+# If you want to override and customize the configuration, mount a "config.local.yml" to your container!
+
+version: "1.0.0"
+
+http:
+  listen: "0.0.0.0"
+  port: 8000
+
+rateLimiter:
+  limit: "1000-H"
+  prefix: "limiter_skmcparser"
+
+redis:
+  # address: takes env variable
+  # username: takes env variable
+  # password : takes env variable
+  db: 0
