@@ -11,31 +11,30 @@ import (
 
 func StartHTTP(ctx *structures.ParserContext) {
 	log.Println("[Skript-MC] Starting web server...")
-	r := gin.Default()
+	ctx.Gin = gin.Default()
 
-	// Register routes
-	r.GET("/parsers", func(ginCtx *gin.Context) {
-		handlers.Parsers(structures.HTTPRequest{
-			Gin: ginCtx,
-			Ctx: ctx,
-		})
-	})
-
-	r.POST("/parse", func(ginCtx *gin.Context) {
-		handlers.Parse(structures.HTTPRequest{
-			Gin: ginCtx,
-			Ctx: ctx,
-		})
-	})
+	ctx.Gin.ForwardedByClientIP = true
 
 	// Setup middlewares
 	middlewares.RateLimiter(ctx)
 
-	err := http.ListenAndServe(ctx.Config.HTTPAddress(), r)
+	// Register routes
+	ctx.Gin.GET("/parsers", createHandler(ctx, handlers.Parsers))
+	ctx.Gin.POST("/parse", createHandler(ctx, handlers.Parse))
+
+	err := http.ListenAndServe(ctx.Config.HTTPAddress(), ctx.Gin)
 	if err != nil {
 		log.Fatal("[Skript-MC] Cannot start web server: ", err)
 	}
 
 	log.Println("[Skript-MC] Web server successfully started.")
-	ctx.Gin = r
+}
+
+func createHandler(ctx *structures.ParserContext, router func(req structures.HTTPRequest)) func(ginCtx *gin.Context) {
+	return func(ginCtx *gin.Context) {
+		router(structures.HTTPRequest{
+			Gin: ginCtx,
+			Ctx: ctx,
+		})
+	}
 }
