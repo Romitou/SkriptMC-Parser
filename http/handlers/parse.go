@@ -11,6 +11,10 @@ import (
 )
 
 func Parse(req structures.HTTPRequest) {
+	req.Gin.Status(200)
+}
+
+func PostParse(req structures.HTTPRequest) {
 
 	requestBody, err := ioutil.ReadAll(req.Gin.Request.Body)
 	if err != nil {

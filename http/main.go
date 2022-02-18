@@ -21,7 +21,9 @@ func StartHTTP(ctx *structures.ParserContext) {
 
 	// Register routes
 	ctx.Gin.GET("/parsers", createHandler(ctx, handlers.Parsers))
-	ctx.Gin.POST("/parse", createHandler(ctx, handlers.Parse))
+
+	ctx.Gin.POST("/parse", createHandler(ctx, handlers.PostParse))
+	ctx.Gin.OPTIONS("/parse", createHandler(ctx, handlers.Parse))
 
 	err := http.ListenAndServe(ctx.Config.HTTPAddress(), ctx.Gin)
 	if err != nil {
