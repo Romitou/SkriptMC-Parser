@@ -16,6 +16,7 @@ func StartHTTP(ctx *structures.ParserContext) {
 	ctx.Gin.ForwardedByClientIP = true
 
 	// Setup middlewares
+	middlewares.Cors(ctx)
 	middlewares.RateLimiter(ctx)
 
 	// Register routes
