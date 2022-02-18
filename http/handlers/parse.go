@@ -11,6 +11,7 @@ import (
 )
 
 func Parse(req structures.HTTPRequest) {
+	req.Gin.Header("Access-Control-Allow-Headers", "Content-Type")
 	req.Gin.Status(200)
 }
 
