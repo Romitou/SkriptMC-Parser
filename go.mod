@@ -18,7 +18,7 @@ require (
 	github.com/mileusna/crontab v1.2.0
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/spf13/viper v1.12.0
-	github.com/ulule/limiter/v3 v3.9.0
+	github.com/ulule/limiter/v3 v3.10.0
 	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
