@@ -10,7 +10,7 @@ require (
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-playground/validator/v10 v10.10.0 // indirect
 	github.com/go-redis/redis/v7 v7.2.0 // indirect
-	github.com/go-redis/redis/v8 v8.11.4
+	github.com/go-redis/redis/v8 v8.11.5
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid v1.2.1 // indirect
