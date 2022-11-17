@@ -1,4 +1,4 @@
-FROM alpine:3.16 AS build
+FROM alpine:3.17 AS build
 
 WORKDIR /app/go/
 
@@ -12,7 +12,7 @@ ENV GOPATH /app
 RUN go get
 RUN CGO_ENABLED=1 GOOS=linux go build -ldflags "-s -w" -o skmc-parser
 
-FROM alpine:3.16
+FROM alpine:3.17
 
 WORKDIR /app
 
