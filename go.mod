@@ -3,7 +3,7 @@ module github.com/romitou/skriptmc-parser
 go 1.19
 
 require (
-	github.com/docker/docker v20.10.22+incompatible
+	github.com/docker/docker v20.10.23+incompatible
 	github.com/gin-gonic/gin v1.8.2
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/mileusna/crontab v1.2.0
