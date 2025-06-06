@@ -12,7 +12,7 @@ jobs:
       - name: 🔧 Setup Go 1.17
         uses: actions/setup-go@v3
         with:
-          go-version: '1.24.3'
+          go-version: '1.24.4'
       - name: 📦 Download dependencies
         run: go get
       - name: 🛠 Build binary
