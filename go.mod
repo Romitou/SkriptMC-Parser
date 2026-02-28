@@ -5,7 +5,7 @@ go 1.25.0
 toolchain go1.26.0
 
 require (
-	github.com/docker/docker v20.10.27+incompatible
+	github.com/docker/docker v24.0.9+incompatible
 	github.com/gin-gonic/gin v1.12.0
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/mileusna/crontab v1.2.0
