@@ -2,7 +2,7 @@ module github.com/romitou/skriptmc-parser
 
 go 1.25.0
 
-toolchain go1.26.6
+toolchain go1.27.0
 
 require (
 	github.com/docker/docker v20.10.27+incompatible
